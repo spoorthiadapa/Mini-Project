@@ -1,0 +1,372 @@
+!pip install matplotlib
+!pip install pandas
+!pip install seaborn
+!pip install plotly.express
+import pandas as pd
+import numpy as np
+
+import seaborn as sns
+import matplotlib
+import matplotlib.pyplot as plt
+import plotly.express as px
+%matplotlib inline
+import warnings
+warnings.filterwarnings('ignore')
+df=pd.read_csv('C:/Users/supraja reddy/Documents/Projects/crimes_against_women_2001-2014.csv')
+df.head()
+df.loc[df['STATE/UT'] == 'A&N Islands', 'STATE/UT'] = 'A & N ISLANDS'
+df.loc[df['STATE/UT'] == 'D&N Haveli', 'STATE/UT'] = 'D & N HAVELI'
+df.loc[df['STATE/UT'] == 'Delhi UT', 'STATE/UT'] = 'DELHI'
+
+#converting all the state names to capitals
+df['STATE/UT'] = pd.Series(str.upper(i) for i in df['STATE/UT'])
+df['DISTRICT'] = pd.Series(str.upper(i) for i in df['DISTRICT'])
+df['STATE/UT'].unique()
+df.drop('Unnamed: 0',axis=1,inplace=True)
+df.head()
+state_all_crimes = df.groupby('STATE/UT').sum()
+
+#droping the sum of year column
+state_all_crimes.drop('Year',axis=1,inplace=True)
+
+#adding a column containig the total crime against women in that state
+col_list= list(state_all_crimes)
+state_all_crimes['Total']=state_all_crimes[col_list].sum(axis=1)
+all_crimes = state_all_crimes
+
+all_crimes
+state_all_crimes.sort_values('Total',ascending=False)
+state_all_crimes
+state_all_crimes=state_all_crimes.reset_index()
+total_df=state_all_crimes.sum(axis=0).reset_index()
+tf=pd.DataFrame(total_df)
+tf
+tf=tf.drop([0])
+tf=tf.drop([8])
+sorted_df = state_all_crimes.sort_values('Total',ascending=False)
+fig = px.bar( x=tf["index"],y=tf[0], color=tf[0], 
+             labels={'x': "Crimes", 'y': "Count"}, title="Total Cases", 
+             color_continuous_scale='burg')
+fig.show()
+sorted_df = state_all_crimes.sort_values('Total',ascending=False)
+fig = px.bar( x=sorted_df['STATE/UT'],y=sorted_df["Total"], color=sorted_df["Total"], 
+             labels={'x': "States", 'y': "Count"}, title="Total Cases", 
+             color_continuous_scale='burg')
+fig.show()
+fig = px.bar( x=state_all_crimes['STATE/UT'],y=state_all_crimes["Rape"], color=state_all_crimes["Rape"], 
+             labels={'x': "States", 'y': "Count"}, title="Rape Cases", 
+             color_continuous_scale='burg')
+fig.show()
+fig = px.bar( x=state_all_crimes['STATE/UT'],y=state_all_crimes["Kidnapping and Abduction"], color=state_all_crimes["Kidnapping and Abduction"], 
+             labels={'x': "States", 'y': "Count"}, title="Kidnapping and Abduction Cases", 
+             color_continuous_scale='burg')
+fig.show()
+fig = px.bar( x=state_all_crimes['STATE/UT'],y=state_all_crimes["Dowry Deaths"], color=state_all_crimes["Dowry Deaths"], 
+             labels={'x': "States", 'y': "Count"}, title="Dowry Deaths", 
+             color_continuous_scale='burg')
+fig.show()
+fig = px.bar( x=state_all_crimes['STATE/UT'],y=state_all_crimes["Assault on women with intent to outrage her modesty"], color=state_all_crimes["Assault on women with intent to outrage her modesty"], 
+             labels={'x': "States", 'y': "Count"}, title="Assault on women with intent to outrage her modesty", 
+             color_continuous_scale='burg')
+fig.show()
+fig = px.bar( x=state_all_crimes['STATE/UT'],y=state_all_crimes["Insult to modesty of Women"], color=state_all_crimes["Insult to modesty of Women"], 
+             labels={'x': "States", 'y': "Count"}, title="Insult to modesty of Women", 
+             color_continuous_scale='burg')
+fig.show()
+fig = px.bar( x=state_all_crimes['STATE/UT'],y=state_all_crimes["Cruelty by Husband or his Relatives"], color=state_all_crimes["Cruelty by Husband or his Relatives"], 
+             labels={'x': "States", 'y': "Count"}, title="Cruelty by Husband or his Relatives", 
+             color_continuous_scale='burg')
+fig.show()
+fig = px.bar( x=state_all_crimes['STATE/UT'],y=state_all_crimes["Importation of Girls"], color=state_all_crimes["Importation of Girls"], 
+             labels={'x': "States", 'y': "Count"}, title="Importation of Girls", 
+             color_continuous_scale='burg')
+fig.show()
+all_crimes = all_crimes.reset_index()
+all_crimes
+import pandas as pd
+import numpy as np
+df = pd.read_csv('C:/Users/supraja reddy/Documents/Projects/kmeans.csv')
+# df     
+
+#three clusters _(centroidsspecific)
+c1 = df['Dowry_Deaths'].min()
+c2 = df['Dowry_Deaths'].max()
+c3 = df['Dowry_Deaths'].max()/2
+length = len(df['Dowry_Deaths'])
+keyss = range(length)
+valuess = [None] * length
+lclust_values = dict( zip(keyss,valuess))
+mclust_values = dict( zip(keyss,valuess))
+hclust_values = dict( zip(keyss,valuess))
+i=0
+lclust = 0
+hclust = 0
+mclust = 0
+# print(length)
+for i in range(length):
+    a = abs(df.Dowry_Deaths[i]-c1)
+    b = abs(df.Dowry_Deaths[i]-c2)
+    c = abs(df.Dowry_Deaths[i]-c3)
+    #the one with the minimum distance will be considered 
+    val = min(a,b,c) 
+    if val == a:
+        lclust = df.Dowry_Deaths[i]
+        lclust_values[i] = lclust
+    elif val == b:
+        hclust = df.Dowry_Deaths[i]
+        hclust_values[i] = hclust
+    else:
+        mclust = df.Dowry_Deaths[i]
+        mclust_values[i] = mclust
+l_indexes = [k for k in lclust_values.keys() if lclust_values[k]!=None]
+m_indexes = [k for k in mclust_values.keys() if mclust_values[k]!=None]
+h_indexes = [k for k in hclust_values.keys() if hclust_values[k]!=None]
+L_index = []
+for i in range(len(l_indexes)):
+    l_indexes[i] = int(l_indexes[i])
+    L_index.append(l_indexes[i])
+M_index = []
+for i in range(len(m_indexes)):
+    m_indexes[i] = int(m_indexes[i])
+    M_index.append(m_indexes[i])
+H_index = []
+for i in range(len(h_indexes)):
+    h_indexes[i] = int(h_indexes[i])
+    H_index.append(h_indexes[i])
+for i in H_index:
+    print('STATE: '+ str(df['STATE/UT'][i])+'\t\t\t\t'+'DISTRICT: '+str(df['DISTRICT'][i]))
+for i in M_index:
+    print('STATE: '+ str(df['STATE/UT'][i])+'\t\t\t\t'+'DISTRICT: '+str(df['DISTRICT'][i]))
+for i in L_index:
+    print('STATE: '+ str(df['STATE/UT'][i])+'\t\t\t'+'DISTRICT: '+str(df['DISTRICT'][i]))
+import folium
+from folium.plugins import HeatMap
+import sys
+map_crime = folium.Map(location=[15.9129,79.7400], zoom_start=5,tiles="openstreetmap")
+map_crime
+
+hlat = []
+hlon = []
+for i in H_index:
+    hlat.append(df.Latitude[i])
+    hlon.append(df.Longitude[i])
+
+
+popup_texts = []
+for i in H_index:
+    popup_text = """ District : {} 
+
+                     State : {} 
+ """
+    popup_texts.append(str(popup_text.format(df["DISTRICT"][i], df["STATE/UT"][i])))
+# print(popup_texts)
+
+for i in range(len(H_index)):
+#     print(popup_texts[i])
+    folium.CircleMarker(location=[float(hlat[i]),float(hlon[i])],popup=popup_texts[i],color = 'red',fill =True).add_to(map_crime)
+
+mlat = []
+mlon = []
+
+for i in M_index:
+    mlat.append(df.Latitude[i])
+    mlon.append(df.Longitude[i])
+popup_texts = []
+for i in M_index:
+    popup_text = """ District : {} 
+    State : {} 
+ """
+    popup_texts.append(str(popup_text.format(df["DISTRICT"][i], df["STATE/UT"][i])))
+for i in range(len(M_index)):
+    try:
+#         print(popup_texts[i])
+        folium.CircleMarker(location=[float(mlat[i]),float(mlon[i])],popup=popup_texts[i],color = 'green',fill =True).add_to(map_crime)  
+    except:
+        pass
+
+llat = []
+llon = []
+for i in L_index:
+    llat.append(df['Latitude'][i])
+    llon.append(df['Longitude'][i])
+popup_texts = []
+for i in L_index:
+    popup_text = """ District : {} 
+ State : {} 
+ """
+    popup_texts.append(str(popup_text.format(df["DISTRICT"][i], df["STATE/UT"][i])))
+for i in range(len(L_index)):
+    try:
+#         print(popup_texts[i])
+        folium.CircleMarker(location=[float(llat[i]),float(llon[i])],popup=popup_texts[i],color = 'blue',fill =True).add_to(map_crime)  
+    except:
+        pass
+map_crime
+import numpy as np
+import matplotlib
+import pandas as pd
+from matplotlib import style
+import matplotlib.pyplot as plt
+import matplotlib 
+import sklearn
+import warnings
+from sklearn import linear_model
+from sklearn.model_selection import train_test_split
+warnings.simplefilter(action="ignore",category=FutureWarning)
+%matplotlib inline
+df = pd.read_csv('C:/Users/supraja reddy/Documents/Projects/andhra_pradesh_crimes.csv')
+xs=df.iloc[:,0]
+ys=df.iloc[:,1]
+len(xs),len(ys)
+def slope_intercept(x_val,y_val):
+  x=np.array(x_val)
+  y=np.array(y_val)
+  m=( ( (np.mean(x)*np.mean(y)) - np.mean(x*y) ) /
+    ((np.mean(x)*np.mean(x))-np.mean(x*x)) )
+  m=round(m,2)
+  b=(np.mean(y)-np.mean(x)*m)
+  b=round(b,2)
+  
+  return m,b
+
+slope_intercept(xs,ys)
+m,b=slope_intercept(xs,ys)
+reg_line=[(m*x)+b for x in xs]
+plt.scatter(xs,ys,color="red")
+plt.plot(xs,reg_line)
+plt.ylabel("Rape crime rate")
+plt.xlabel("Year")
+plt.title("Making a regression line")
+#X = df.iloc[:,:-1] 
+#y = df.iloc[:, 1]
+#from sklearn.model_selection import train_test_split  
+#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0) 
+X1 = df.iloc[:, :-7].values  
+y1 = df.iloc[:, 1].values  
+from sklearn.model_selection import train_test_split  
+x1_train, x1_test, y1_train, y11_test = train_test_split(X1, y1, test_size=0.3, random_state=0)  
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(x1_train,y1_train)
+#X = df.iloc[:,:-1] 
+#y = df.iloc[:, 1]
+#y_pred = regressor.predict(X_test)
+print("Regressor intercept: "+str(m) )
+print("Regressor coefficient: "+str(b) )
+#def predict(x):
+ # y_predd=m*float(x)+b
+  #return y_predd
+print("Year")
+for x in np.nditer(xs):
+  print(x)
+print("\n\nRape values")
+for x in np.nditer(ys):
+  print(x)
+#ypredd=m*X_test+b
+#print("\n\nY_Predicted")
+#for x in np.nditer(ypredd):
+#  print(int(x))
+years = np.array([2015,2016,2017,2018])
+df1=pd.DataFrame(years)
+print(df1)
+ypredd=(m*years+b)
+for x in np.nditer(ypredd):
+  print(int(x))
+trmergedlist=np.concatenate((xs, years), axis=0)
+print("Years: "+str(trmergedlist))
+#print("Rape rate :"+str(temergedlist))
+#print(ypredd)
+
+#print(temergedlist)
+#m,b=slope_intercept(trmergedlist,temergedlist)
+reg_line=[(m*x)+b for x in trmergedlist]
+temergedlist=np.concatenate((ys,ypredd), axis=0)
+print("Rape: "+str(temergedlist))
+plt.scatter(trmergedlist,temergedlist,color="red")
+plt.plot(trmergedlist,reg_line)
+plt.xlim((2001,2018))
+#plt.ylim((800,1900))
+plt.ylabel("Rape crime rate")
+plt.xlabel("Year")
+plt.title("Making a regression line")
+accuracy = regressor.score(x1_test,y11_test)
+accuracy=round(accuracy,1)
+print("Accuracy: "+str(accuracy*100)+'%')
+from sklearn.metrics import r2_score
+lr = LinearRegression()
+
+lr.fit(x1_train, y1_train)
+
+pred = lr.predict(x1_test)
+
+r2_MultiLinear = r2_score(y11_test,pred)
+print(pred)
+print('-'*50)
+print(y11_test)
+import pandas as pd
+import numpy as np
+
+import seaborn as sns
+import matplotlib
+import matplotlib.pyplot as plt
+import plotly.express as px
+%matplotlib inline
+import warnings
+warnings.filterwarnings('ignore')
+df=pd.read_csv('C:/Users/supraja reddy/Documents/Projects/crimes_against_women_2001-2014 - Copy - Copy.csv')
+df.head()
+df.loc[df['STATE/UT'] == 'A&N Islands', 'STATE/UT'] = 'A & N ISLANDS'
+df.loc[df['STATE/UT'] == 'D&N Haveli', 'STATE/UT'] = 'D & N HAVELI'
+df.loc[df['STATE/UT'] == 'Delhi UT', 'STATE/UT'] = 'DELHI'
+
+#converting all the state names to capitals
+df['STATE/UT'] = pd.Series(str.upper(i) for i in df['STATE/UT'])
+df['DISTRICT'] = pd.Series(str.upper(i) for i in df['DISTRICT'])
+df['STATE/UT'].unique()
+df.drop('Unnamed: 0',axis=1,inplace=True)
+df.head()
+state_all_crimes = df.groupby('STATE/UT').sum()
+
+#droping the sum of year column
+state_all_crimes.drop('Year',axis=1,inplace=True)
+
+#adding a column containig the total crime against women in that state
+col_list= list(state_all_crimes)
+state_all_crimes['Total']=state_all_crimes[col_list].sum(axis=1)
+all_crimes = state_all_crimes
+
+all_crimes
+#plotting the graph of year v/s number of dowry deaths
+#df_UP.plot(x='Year',y='Dowry Deaths')
+df_AP.plot(kind = 'line',
+        x = 'Year',
+        y = 'Dowry_Deaths')
+#using the ARIMA model to forecast the future 5 years values
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+from statsmodels.tsa.arima.model import ARIMA
+from statsmodels.tsa.stattools import adfuller
+def check_stationarity(series):
+    # Copied from https://machinelearningmastery.com/time-series-data-stationary-python/
+
+    result = adfuller(series.values)
+
+    print('ADF Statistic: %f' % result[0])
+    print('p-value: %f' % result[1])
+    print('Critical Values:')
+    for key, value in result[4].items():
+        print('\t%s: %.3f' % (key, value))
+
+    if (result[1] <= 0.05) & (result[4]['5%'] > result[0]):
+        print("\u001b[32mStationary\u001b[0m")
+    else:
+        print("\x1b[31mNon-stationary\x1b[0m")
+check_stationarity(df_AP['Dowry_Deaths'])
+plot_acf(df_AP['Dowry_Deaths'],lags=10)
+plot_pacf(df_AP['Dowry_Deaths'],lags=6)
+#building the ARIMA model with p=1,d=1,q=1
+model = ARIMA(df_AP['Dowry_Deaths'], order=(1,1,1))
+model_fit = model.fit()
+print(model_fit.summary())
+fc = model_fit.forecast(4, alpha=0.05)
+for i in fc:
+    print(round(i,0))
