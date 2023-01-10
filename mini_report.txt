@@ -1,0 +1,1103 @@
+\documentclass[a4paper,12pt, English]{article}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage[spanish]{babel}
+% \{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage[svgnames]{xcolor}
+\renewcommand{\baselinestretch}{1.5}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{sectsty}
+\usepackage{fancyhdr}
+\fancyfoot[C]{}
+\renewcommand{\headrulewidth}{4pt}
+\renewcommand{\footrulewidth}{4pt}
+\sectionfont{\fontsize{17.28}{17.28}\selectfont}
+\usepackage{mathptmx}
+\usepackage[font=small,labelfont=bf]{caption}
+\renewcommand{\figurename}{Figure}
+\usepackage[figurename=Figure]{caption}
+\usepackage{ragged2e}
+\usepackage{multirow}
+\addtolength{\topmargin}{-57pt}
+\addtolength{\oddsidemargin}{92pt}
+\addtolength{\footskip}{25pt}
+\justifying
+
+\usepackage{listings}
+\usepackage{afterpage}
+\pagestyle{plain}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+
+
+\lstset{frame=tb,
+language=R,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+numbers=none,
+keywordstyle=\color{blue},
+numberstyle=\tiny\color{gray},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=3
+}
+
+\usepackage{here}
+
+
+\textheight=24cm
+\textwidth=17cm
+%\topmargin=-1cm
+\oddsidemargin=0cm
+\parindent=0mm
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% La siguiente instrucciÃ³n pone el curso automÃ¡ticamente%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{color}
+
+
+\captionsetup[table]{name=Table}
+\global\let\date\relax
+\newcounter{unomenos}
+\setcounter{unomenos}{\number\year}
+\addtocounter{unomenos}{-1}
+\stepcounter{unomenos}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\hyphenchar\font=-1
+\sloppy
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+\vspace*{-1in}
+
+
+\begin{Large}
+\vspace*{0.1in}
+\textbf{A Mini-Project Report\\on}
+\end{Large}
+\\
+\vspace*{0.1in}
+\textbf{\LARGE Crime Analysis and Prediction Against Women}
+
+%==========================================================================
+\begin{large}
+\textbf{{Submitted in partial fulfillment of the requirements \\
+for the award of degree of}}\\
+\end{large}
+%==========================================================================
+%==========================================================================
+\begin{large}
+{\textbf{BACHELOR OF TECHNOLOGY \\ in\\ Information Technology\\by}}\\
+\end{large}
+%===========================================================================
+
+\textit{\textbf{\large A. Spoorthi (19WH1A1250) }} \\
+\textit{\textbf{\large Riya Fathima (19WH1A1251) }} \\
+\textit{\textbf{\large Ch. Supraja (19WH1A1254) }} \\
+\textit{\textbf{\large K. Sowmya (19WH1A1256) }} \\
+%==========================================================================
+\begin{large}
+\textit{\textbf{Under the esteemed guidance of}}\\
+\end{large}
+%==========================================================================
+\textbf{\large \textit {Ms. R. Sravani}}\\
+\textbf{\large \textit {Assistant Professor}}\\
+%==========================================================================
+\begin{center}
+\includegraphics[width=2.0cm]{Picture1.png}
+\end{center}
+%==========================================================================
+
+\begin{large}
+\textbf{Department of Information Technology}\\
+\end{large}
+%==========================================================================
+\begin{Large}
+\textbf{BVRIT HYDERABAD College of Engineering for Women}\\
+\end{Large}
+\begin{normalsize}
+\textbf{ Rajiv Gandhi Nagar, Nizampet Road, Bachupally, Hyderabad – 500090}
+
+%===========================================================================
+\textbf{(Affiliated to Jawaharlal Nehru Technological University Hyderabad)}\\
+
+\textbf{(NAAC ‘A’ Grade \& NBA Accredited- ECE, EEE, CSE & IT)}\\
+
+\end{normalsize}
+\begin{large}
+\vspace{0.05in}
+\textbf{ January, 2023}\\
+\end{large}
+\end{center}
+\end{titlepage}
+%===========================================================================
+\begin{titlepage}
+\newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
+\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+%===========================DECLARATION=====================================
+\begin{center}
+    \textbf{\large DECLARATION}\\
+\end{center}
+\vspace*{0.2in}
+
+We hereby declare that the work presented in this project entitled  “{\textbf{CRIME ANALYSIS AND PREDICTION AGAINST WOMEN}}” submitted towards completion of the project in IV year I sem of B.Tech IT at “BVRIT HYDERABAD College of Engineering for Women ”, Hyderabad is an authentic record of our original work carried out under the esteemed guidance of {\textbf{ Ms. R. Sravani, Assistant Professor}}, Department of IT.
+
+
+\raggedleft
+\vspace*{0.5in}
+{{A. Spoorthi (19WH1A1250)\\
+\newline\hfill\break
+Riya Fathima (19WH1A1251)\\
+\newline\hfill\break
+Ch. Supraja (19WH1A1254)\\
+\newline\hfill\break
+K. Sowmya (19WH1A1256)\\}}
+
+
+
+
+\end{titlepage}
+%===========================================================================
+%===========================CERTIFICATE=====================================
+
+%==================================================================
+\begin{titlepage}
+\vspace*{-0.5in}
+\begin{center}
+\includegraphics[width=2.8cm]{Picture1.png}
+\end{center}
+%===========================================================================
+\begin{center}
+\begin{large}
+\textbf{BVRIT HYDERABAD\\ College of Engineering for Women}\\
+\end{large}
+\begin{footnotesize}
+\textbf{ Rajiv Gandhi Nagar, Nizampet Road, Bachupally, Hyderabad – 500090}\\
+\vspace*{0.1in}
+\textbf{(Affiliated to Jawaharlal Nehru Technological University, Hyderabad)}\\
+\textbf{(NAAC ‘A’ Grade \& NBA Accredited- ECE, EEE, CSE \& IT)}\\
+\end{footnotesize}
+\end{center}
+%===========================================================================
+\begin{center}
+    \textbf{\large CERTIFICATE}\\
+\end{center}
+
+\begin{normalsize}
+
+
+This is to certify that the mini-project report on {\textbf{“CRIME ANALYSIS AND PREDICTION AGAINST WOMEN”}} is a bonafide work carried out by  {\textbf{A. Spoorthi (19WH1A1250), Riya Fathima (19WH1A1251), Ch. Supraja (19WH1A1254), K. Sowmya (19WH1A1256)}} in the partial fulfillment for the award of B.tech degree in \textbf{Information Techonology, BVRIT HYDERABAD College of Engineering for Women, Bachupally, Hyderabad} affiliated to the Jawaharlal Nehru Technological University Hyderabad under my guidance and supervision. The results embodied in the mini-project work have not been submitted to any other university or institute for the award of any degree or diploma.
+\newline
+
+\end{normalsize}
+
+
+\vspace*{0.6in}
+
+
+
+\noindent
+{\begin{normalsize}
+{\textbf{Internal Guide}}
+\end{normalsize}
+}
+\hfill
+{\begin{normalsize}
+{\textbf{Head of the Department}}
+\end{normalsize}
+}\\
+%===========================================================================
+\noindent
+{\begin{normalsize}
+{\textbf{Ms. R. Sravani}}
+\end{normalsize}
+}
+\hspace{9.35cm}
+{\begin{normalsize}
+{\textbf{Dr. Aruna Rao S L}}
+\end{normalsize}
+}\\
+%===========================================================================
+\noindent
+{\begin{normalsize}
+{\textbf{Assistant Professor}}
+\end{normalsize}
+}
+\hspace{8.43cm}
+{
+\begin{normalsize}
+\textbf{Professor \& HoD}
+\end{normalsize}
+}\\
+%===========================================================================
+\hspace{9cm}
+\noindent
+{\begin{normalsize}
+{\textbf{Department of IT}}
+\end{normalsize}
+}
+\hspace{8.65cm}
+{
+\begin{normalsize}
+{\textbf{Department of IT}}
+\end{normalsize}
+}
+\vspace*{0.4in}
+\begin{center}
+{\textbf{\large External Examiner}}
+\end{center}
+
+
+
+
+\end{titlepage}
+%===========================================================================
+%===========================ACKNOWLEDGEMENT=================================
+\begin{titlepage}
+\begin{center}
+    \textbf{\normalsize \underline{ACKNOWLEDGEMENT}}\\
+\end{center}
+\vspace*{0.2in}
+\begin{normalsize}
+We would like to express our profound gratitude and thanks to \textbf{Dr. K. V. N. Sunitha, Principal, BVRIT HYDERABAD College of Engineering for Women} for providing the working facilities in the college.\\
+\newline
+Our sincere thanks and gratitude to \textbf{Dr. Aruna Rao S L, Professor \& Head, Department of Information Technology, BVRIT HYDERABAD College of Engineering for Women} for all the timely support, constant guidance and valuable suggestions during the period of our project.\\
+\newline
+We are extremely thankful and indebted to our internal guide, \textcolor{black}{\textbf{Ms R. Sravani, Assistant Professor }},\textbf{ Department of IT, BVRIT HYDERABAD College of Engineering for Women} for her constant guidance, encouragement and moral support throughout the project.\\
+\newline
+Finally, we would also like to thank our Project Coordinators \textbf{Ms S. Rama Devi, Associate Professor and Ms K .Kavitha, Assistant Professor}, all the faculty and staff of the Department of IT who helped us directly or indirectly, parents and friends for their cooperation in completing the project work.
+\end{normalsize}
+
+\raggedleft
+\vspace*{0.5in}
+\begin{normalsize}
+\textcolor{black}{{A. Spoorthi (19WH1A1250)}}\\ \\
+\raggedleft
+\vspace*{0.3in}
+\textcolor{black}{{Riya Fathima (19WH1A1251)}}\\ \\
+\raggedleft
+\vspace*{0.3in}
+\textcolor{black}{{Ch. Supraja (19WH1A1254)}}\\ \\
+\raggedleft
+\vspace*{0.3in}
+\textcolor{black}{{K. Sowmya (19WH1A1256)}}\\ \\
+
+\raggedleft
+\end{normalsize}
+\end{titlepage}
+%===========================ABSTRACT========================================
+\begin{titlepage}
+
+\begin{center}
+    \textbf{\Large ABSTRACT}\\
+\end{center}
+
+\begin{normalsize}
+\tab One of the risky features of our society that is steadily intensifying and becoming more complex is crime against women. The main goal of this project is to use clustering and classification algorithms to discriminate between different crimes based on frequency and regularity. Because crime patterns are always evolving, it is challenging to interpret criminal behaviour. According to the amount of crimes committed in each state, the K-means clustering technique is employed in this project to classify the states as safe or dangerous. To forecast crime over the next five years, we also employ linear regression and the ARIMA model. This proposed system can indicate the crime ahead which has a high probability of crime and thus effectively help in significantly reducing the crime rate in various parts of the country.
+\end{normalsize}\\\\\\\\\\\\\\\\
+\begin{normalsize}
+\begin{center}
+\textbf{\newline\newline\newline V}
+\end{center}
+\end{normalsize}
+\end{titlepage}
+%=====================LIST-OF-FIGURES======================================
+\begin{titlepage}
+
+\begin{center}
+\vspace{-100cm}
+    \textbf{\large LIST OF FIGURES}
+\end{center}
+
+\begin{center}
+\begin{normalsize}
+     \begin{tabular}{|c|l|c|}
+     \hline
+     \normalsize\textbf{S.No.} & \normalsize\textbf{Title} & \normalsize\textbf{Page No.} \\
+     \hline
+     3.1.1 & Block Diagram of Proposed System & 5\\ \hline
+     3.2.1 & Architecture & 6\\ \hline
+     3.3.1 & Activity Diagram & 6\\ \hline
+     3.4.1 & Use Case Diagram & 7\\ \hline
+     4.1.3.1 & Data Analysis & 9\\ \hline
+     4.2.1.1 & Flow Chart of K-Means Algorithm & 11\\ \hline
+     4.2.1.2 & K-Means Clusters & 12\\ \hline
+     4.2.2.1 & Linear Regression & 13\\ \hline
+     4.2.3.1 & Data Visualization e & 14\\ \hline
+     4.2.4.1 & AutoCorrelation & 16\\ \hline
+     4.2.4.2 & Partial AutoCorrelation & 15\\ \hline
+     4.3.1 & Implementation of K-Means Clusters & 16\\ \hline
+     4.3.2 & Implementation K-Means Algorithm & 16\\ \hline
+     4.3.3 & Data Visualization of Various Crimes & 17\\ \hline
+     4.3.4 & Crime Analysis Using K-Means Algorithm & 17\\ \hline
+     4.3.5 & K-Means Algorithm & 18\\ \hline
+     4.3.6 & Rape Crime Before Prediction & 18\\ \hline
+     4.3.7 & Rape Crime After Prediction & 19\\ \hline
+     4.3.8 & Crime Prediction using ARIMA model & 19\\ \hline
+     \end{tabular}
+    \begin{normalsize}
+    \begin{center}
+    \vspace*{\fill}
+    \textbf{VI}
+    \end{center}
+\end{normalsize}
+\end{normalsize}
+\end{titlepage}
+
+\newpage
+%=====================CONTENTS=============================================
+\begin{titlepage}
+
+\begin{center}
+    \textbf{\Large CONTENTS}\\
+\end{center}
+\vspace*{0.25in}
+
+%===========================================================================
+\noindent
+{\begin{normalsize}
+\textbf{\tab TOPIC}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{PAGE NO.}
+\end{normalsize}
+}\\
+%===========================================================================
+\noindent
+{\begin{large}
+\textbf{ \tab Abstract}
+\end{large}
+}
+\hspace{12.35cm}
+{
+\begin{normalsize}
+\textbf{V}
+\end{normalsize}
+}\\
+%==========================================================================
+\noindent
+{\begin{large}
+\textbf{ \tab List of Figures}
+\end{large}
+}
+\hspace{10.95cm}
+{
+\begin{normalsize}
+\textbf{VI}
+\end{normalsize}
+}\\
+%==========================================================================
+\noindent
+{\begin{large}
+\textbf{\tab 1. Introduction}
+\end{large}
+}
+\hspace{11.1cm}
+{
+\begin{large}
+\textbf{1}
+\end{large}
+}\\
+%------------------------------------
+\noindent
+{\begin{large}
+ \tab\tab 1.1  Objective
+\end{large}
+}
+\hspace{10.7cm}
+{
+\begin{large}
+\textbf{1}
+\end{large}
+}\\
+%-----------------------------------------
+{\begin{large}
+ \tab\tab 1.2  Problem Definition
+\end{large}
+}
+\hspace{8.7cm}
+{
+\begin{large}
+\textbf{1}
+\end{large}
+}\\
+%-----------------
+{\begin{large}
+\tab\tab 1.3 Aim of the Project
+\end{large}
+}
+\hspace{8.9cm}
+{
+\begin{large}
+\textbf{2}
+\end{large}
+}\\
+%===========================================
+\noindent
+{\begin{large}
+\textbf{\tab 2. Literature Survey}
+\end{large}
+}
+\hspace{10cm}
+{
+\begin{large}
+\textbf{3}
+\end{large}
+}\\
+%---------------------------------
+{\begin{large}
+\tab\tab 2.1 Related Work
+\end{large}
+}
+\hspace{9.9cm}
+{
+\begin{large}
+\textbf{3}
+\end{large}
+}\\
+%-------------------------------------------
+{\begin{large}
+\tab\tab 2.2 Major Issues
+\end{large}
+}
+\hspace{10.1cm}
+{
+\begin{large}
+\textbf{4}
+\end{large}
+}\\
+%============================================
+\noindent
+{\begin{large}
+\textbf{\tab 3. System Analysis \& Design }
+\end{large}
+}
+\hspace{8.2cm}
+{
+\begin{large}
+\textbf{5}
+\end{large}
+}\\
+%-----------------
+\noindent
+{\begin{large}
+\tab\tab 3.1  Proposed System
+\end{large}
+}
+\hspace{9.2cm}
+{
+\begin{large}
+\textbf{5}
+\end{large}
+}\\
+%---------------------
+\noindent
+{\begin{large}
+\tab\tab 3.2  Architecture Design
+\end{large}
+}
+\hspace{8.6cm}
+{
+\begin{large}
+\textbf{6}
+\end{large}
+}\\
+%----------------
+\noindent
+{\begin{large}
+\tab\tab 3.3  Activity Diagram
+\end{large}
+}
+\hspace{9.1cm}
+{
+\begin{large}
+\textbf{6}
+\end{large}
+}\\
+%-------------------------------
+\noindent
+{\begin{large}
+\tab\tab 3.4  Use Case Diagram
+\end{large}
+}
+\hspace{8.9cm}
+{
+\begin{large}
+\textbf{7}
+\end{large}
+}\\
+%==============================
+\noindent
+{\begin{large}
+\textbf{\tab 4. Implementation }
+\end{large}
+}
+\hspace{10.4cm}
+{
+\begin{large}
+\textbf{8}
+\end{large}
+}\\
+%------------------------------
+\noindent
+{\begin{large}
+\tab\tab 4.1  Module Names
+\end{large}
+}
+\hspace{9.6cm}
+{
+\begin{large}
+\textbf{8}
+\end{large}
+}\\
+%-------------------------
+\noindent
+{\begin{large}
+\tab\tab 4.2  Proposed Algorithm Names
+\end{large}
+}
+\hspace{6.9cm}
+{
+\begin{large}
+\textbf{10}
+\end{large}
+}\\
+%------------------
+\noindent
+{\begin{large}
+\tab\tab 4.3 Results
+\end{large}
+}
+\hspace{11.1cm}
+{
+\begin{large}
+\textbf{16}
+\end{large}
+}\\
+%----------------
+\noindent
+{\begin{large}
+\textbf{\tab 5. Conclusion \& Future Enhancements}
+\end{large}
+}
+\hspace{6cm}
+{
+\begin{large}
+\textbf{20}
+\end{large}
+}\\
+%------------------------------
+\noindent
+{\begin{large}
+\textbf{\tab References}
+\end{large}
+}
+\hspace{12cm}
+{
+\begin{large}
+\textbf{21}
+\end{large}
+}
+\end{titlepage}
+
+\pagestyle{fancy}
+\rhead{\footnotesize Crime Analysis and Prediction Against Women }
+\fancyfoot[L]{\footnotesize Department of Information Technology}
+\fancyfoot[R]{\footnotesize\thepage}
+\begin{center}
+\section{\Large Introduction}
+\end{center}
+\tab Crimes in India are increasing at a very tremendous rate. Over the past years,
+they have seen plenty of growth and have moved on the way to success, and
+India is one in every one of them. India is one of the countries which has
+tried to balance between the advancement and their culture. We Indians pray
+for women one hand then attempt to suppress their voice on the opposite
+hand. The rise in the number of crimes against women within the past few
+decades indicates the statement. In a country where the economy is booming
+and is growing in each and every particular state and sector. In spite of all
+this, there has been a huge increase in the number of crimes against women.
+According to the report of WHO on crime against women published on 29th
+Nov 2017, one out of each 3 women across the globe faces some crime a
+minimum of once in their life. So,  if we have a tendency to look at the statistics, around 35
+you look after the girl bearing this and are mostly
+done by their partners or knowns.\\
+\\
+\begin{large}
+\textbf{1.1 Objective}
+\end{large}\\
+\tab The objective would be to train a model for prediction. The training would
+be done using the training data set which will be validated using the test
+dataset. Building the model will be done using a better algorithm depending
+upon the accuracy. The K-means clustering and a few classification
+algorithms will be used for crime prediction. Visualization of the dataset is
+done to analyze the crimes which may have occurred in the particular state.
+This work helps the law enforcement agencies to predict and detect crimes
+in India with improved accuracy and thus reduces the crime rate.\\
+\\
+\begin{large}
+\textbf{1.2 Problem Definition}
+\end{large}
+\newline 
+\tab In country like India crimes against women has been always a serious issue leading to various legal norms and measures against it. With each passing year crime reports are generated leading to huge amount of data. Such data can be used to generate analysis and statistics which will help government and non-government organizations to initiate certain schemes and policies\\
+crime analysis include:\\ 1. Extraction of crime patterns
+by analysis of available crime and criminal data\\ 2. Prediction of crime based on existing data \\
+ 3. Detection of crime.
+\\
+\\
+\begin{large}
+\textbf{1.3 Aim of the Project}
+\end{large}\\
+\tab The aim of this project is to make crime predictions using the features
+present in the dataset. The dataset is extracted from the official sites. With
+the help of machine learning algorithms, using python as core we can predict
+the type of crime that will occur in a particular area.
+\newpage
+\begin{center}
+\section{Literature Survey}
+\end{center}
+\begin{large}
+\textbf{2.1 Related Work}
+\end{large}
+\\
+\tab Keerthi.R, et al.[1] The authors have built various analytical process which are 
+data cleaning and processing, Eliminating missing value, exploratory analysis and finally building the model and 
+evaluation to utilize the resources identify the hotspots of crimes and allocate vigilante resources such as 
+policeman, police cars, weapons etc. reschedule patrols according to the vulnerability of a place. Through that 
+they could avoid crimes ensure better civilization through avoiding happening crimes such as murder, rapes, 
+thefts, drug, smugglings etc.\\
+\\
+\tab Lavanyaa, et al.[2] The authors have identified the Dominant part of the examination works in Crimes against 
+women by utilizing the ‘WEKA Tools’ for their usage; in this way they acquired the better outcomes by utilizing 
+MATLAB. Credulous bayes was frequently utilized and mainstream calculation to arrange and anticipate in the 
+ground of information mining. The Next most utilized calculation is Apriori. The abnormal state of precision has 
+been exploited by Naïve Bayes calculation. So as to investigate the better grouping calculations to foresee Crimes 
+in different urban areas and nations, interconnected examine credentials comprise to be assembled. Investigation 
+demonstrates the preeminent piece of utilizing tools and calculations. Regard we found that clustering in WEKA 
+utensils, Euclidean distance calculation gives the improved exactness in the metropolitan urban areas violations 
+rate to decrease and foresee.\\
+\\
+\tab Priyanka Das, et al.[3] This paper demonstrates an unsupervised 
+approach of extracting relations from newspapers based on criminological data. The proposed work demonstrates 
+an unsupervised approach of extracting relations from newspapers based on criminological data. The proposed 
+clustering technique identifies significant crime patterns that can help both in the criminology and criminal 
+justice industry and eventually it will help the law enforcement agencies to analyze crime at a faster pace.\\
+\\
+\tab B. Sivanagaleela, et al.[4] proposed the project to identify the crime areas based on the clustering technique. 
+They stated that crime patterns identified are not static. So they have identified the crime areas and which type 
+of crime occurred very frequently in which place using the fuzzy clustering technique. \\
+\tab Bhajneet Kaur, et al.[5] In this paper the authors have detected and predicted crime against women, 
+using various data mining techniques by many researchers the authors have used the Indian Crime dataset and 
+few used the techniques on US and England datasets. Most of the techniques used by the researchers are 
+classification and clustering for crime pattern and detection. In the classification some authors depicted the Naïve 
+bayes, some used decision trees and others used Bayesnet, J48, JRip & OneR. Correlation and regression 
+techniques are also used for the crime analysis against women. In this paper review has been done on various 
+techniques of data mining used for crime against women.\\
+\\
+\begin{large}
+\textbf{2.2 Major Issues}
+\end{large}
+\\
+1. In some researches most of the work has been implemented using Naive Bayes Algorithm and
+\hspace{35cm}K-Means Clustering Algorithm.\\
+2. Analysis and Prediction together has not been discussed together.\\
+3. There is no dedicated portal implemented to demonstrate the analysis and prediction of crimes
+against women in India.\\
+
+\\
+
+ 
+
+\newpage
+\begin{center}
+\section{ \Large System Analysis and Design}
+\end{center}
+\newtab 
+
+\begin{large}
+\textbf{3.1 Proposed System}
+\end{large}
+\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm,height=8cm]{blocg dia.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{3.1.1}
+\caption{\footnotesize Block diagram of proposed system}
+\end{center}
+\end{figure}\\
+\tab In the proposed system the crimes are predicting
+based on the location and the types of crimes that are occurring in some areas. Linear Regression and ARIMA model tend
+to give good accuracy so these models are used in this paper to predict crimes. The data set contains different types
+of crimes that being committed in India according to the state and year respectively.
+We take the type of crime as an input and gives the area in which crimes are
+committed as output. The data pre-processing involves data cleaning, feature
+selection, dropping null values, data scaling by normalizing and standardizing. After
+data preprocessing the data is free of null values which m ay alter the accuracy of the
+model significantly . After data pre-processing the models chosen
+i.e., Linear Regression and ARIMA are trained by splitting the
+data into as train and test data. As the output required is a categorical value
+classification models are used here. Python language is used for the data prediction.
+\\
+\newpage
+\begin{large}
+\textbf{3.2 Architecture Design}
+\end{large}\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=10cm,height58cm]{Architecture.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{3.2.1}
+\caption{\footnotesize Architecture}
+\end{center}
+\end{figure}\\
+\begin{large}
+\nextpage
+\textbf{3.3  Activity Diagram}
+\end{large}
+\\
+\tab The activity diagram is used to demonstrate the flow of control
+within the system rather than the implementation. It models the concurrent and sequential activities. The activity diagram helps in envisioning the workflow from one activity to another. It emphasized the condition of flow and the order in which it occurs. The flow can be sequential, branched, or concurrent.
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm,height=8cm]{Activity.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{3.3.1}
+\caption{\footnotesize Activity Diagram}
+\end{center}
+\end{figure}\\
+\begin{large}
+\textbf{3.4  Use case Diagram}
+\end{large}
+\\
+\tab A use case diagram in the Unified Modeling Language (UML) is a type of
+behavioral diagram defined by and created from a Use-case analysis. Its purpose is to
+present a graphical overview of the functionality provided by a system in terms of
+actors, their goals (represented as use cases), and any dependencies between those use
+cases. The main purpose of a use case diagram is to show what system functions are
+performed for which actor. Roles of the actors in the system can be depicted.\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm,height=8cm]{usecase diagram.jpeg}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{3.4.1}
+\caption{\footnotesize Use case Diagram}
+\end{center}
+\end{figure}\\
+ \\\\\\\\\\
+\newpage
+\begin{center}
+\section{Implementation}
+\end{center}
+\tab In the proposed work the data is first pre-processed by removing the missing value and columns which are not 
+needed for the analysis and prediction model. Then we are splitting the data into X and Y attributes, where Y 
+contains column class and its corresponding row entities and X attribute contains all other column and their 
+corresponding row entries with the help of sklearn split data library. The test and train data is split into 3:1 ratio 
+in which the training data set size would be 0.80 of the total dataset size and the testing dataset size would be 
+0.20 of the total data set. After dividing the training and testing dataset, Machine learning algorithms ARIMA model and Linear Regression which are compatible and relevant for our datasetwas applied.
+ARIMA was implemented to the train data which was 80 percentage of the total dataset. Then , we tested the model 
+using the test data which consists of 20 percentage of the total dataset . Accuracy score of the predictive model was 
+observed to be 0.7692307692307693 which was 70.923 percentage accuracy. 
+Linear Regression was implemented on the prediction model and it was observed an accuracy of 83 percentage.
+Linear Regression gave better accuracy result when compared with ARIMA model.\\
+
+
+\begin{large}
+\textbf{4.1 Module}
+\newline 1. Data Collection\\
+2. Data Preprocessing \\
+3. Data Analysis \\
+4. Training Model \\
+5. Testing Model\\
+6. Results\\
+
+\begin{large}
+\textbf{4.1.1 Data Collection}
+\end{large}\\
+\tab Data collection is a process in which information is gathered from many sources which is later used to develop the machine learning models. The data should be stored in a way that makes sense for problem. In this step the data set is converted into the understandable format which can be fed into machine learning models. This dataset contains statistics of various crimes cases against women from the year 2001-2014 with State or Union Territories.
+The dataset contains the various crimes stats like Rape, Domestic Violence,Dowry, etc. with the year and place of the crime.\\
+
+\begin{large}
+\textbf{4.1.2 Data Pre-processing }
+\end{large}\\
+\tab Data pre-processing includes methods to remove any anomalies in data such as missing value, inconsistent values or duplicate values.There were many repeated rows. In some places, different letter cases were used for the same word as in Assam and ASSAM. Other places have improper spacing, and shorthands were used for the State/UT. Delhi was repeated with the suffix UT.Some rows contain the total for that particular district which we don't want. So we are dropping all the columns which contain the word total.\\
+
+ \begin{large}
+\textbf{4.1.3 Data Analysis  }
+\end{large}\\
+\tab Using matplotlib library from sklearn, analysis of the crime dataset is done by plotting various graphs These 
+visualizations would provide the comparative study between the various crimes as well as between crimes in 
+different region.
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=5.25cm]{anlysis (1).png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.1.3.1}
+\caption{\footnotesize Data Analysis}
+\end{center}
+\end{figure}\\
+ \begin{large}
+\textbf{4.1.4 Training Model   }
+\end{large}\\
+\tab This method divides the dataset into train and test sets randomly. The data is split in the ratio 8:2 such that 80 percentage of the data is to be used to train the prediction model and the subsequent 20 percentage is used to test predictions of the model \\
+
+ \begin{large}
+\textbf{4.1.5 Testing Model   }
+\end{large}\\
+\tab Once we train the model with the training dataset, it's time to test the model with the test dataset. This dataset evaluates the performance of the model and ensures that the model can generalize well with the new or unseen dataset.
+ At this stage, we can also check and compare the testing accuracy with the training accuracy, which means how accurate our model is with the test dataset against the training dataset. \\
+ 
+ \begin{large}
+\textbf{4.1.6 Results   }
+\end{large}\\
+\tab Using k-means clustering total districts are divided into three clusters.
+Using ARIMA and  Linear Regression models we predict the crime rates in coming four years.\\
+
+\begin{large}
+\textbf{4.2 Proposed Algorithms Names }
+\end{large}
+ 
+\begin{large}
+\textbf{4.2.1 K-Means Clustering}
+\end{large}\\
+\tab For clustering, k-means clustering algorithm is used which is unsupervised 
+technique. The K-means clustering algorithm uses iterative refinement to produce a final result. The 
+algorithm inputs are the number of clusters and the data set. The dataset is a collection of features for each 
+data point. The dataset consist of States and union territories along with its districts, seven different crimes 
+such as rape,dowry deaths, assault, insult to modesty, importation of girls, kidnapping, Cruelty by husband 
+and his relatives. The algorithms starts with initial estimates for the centroids, which can either be 
+randomly generated or randomly selected from the data set. So here the number of clusters, k=3. Three 
+different clusters are formed based on the number of crimes in that particular place. The districts with 
+highest number of crime rate will be grouped together in a cluster, similarly the one with lowest and average 
+number of crimes. The algorithm then iterates between two
+steps:\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm,height48cm]{K-Means.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.1.1}
+\caption{\footnotesize Flow Chart of K-Means Algorithm}
+\end{center}
+\end{figure}
+
+(a) Data assignment step: Each centroid defines one of the clusters. In this step,each data point is assigned to 
+its nearest centroid, based on the squared Euclidean distance. Since the data is present in the form of 1d 
+array the y coordinate becomes zero and the distance can be calculated by just finding the difference between 
+the centroids and the dataset values.\\
+(b) Centroid update step: In this step, the centroids are recomputed. This is done by taking the mean ofall 
+data points assigned to that centroid’s cluster. The algorithm iterates between steps one and two until a 
+stopping criteria is met(i.e., no data points change clusters, the sum of the distances is minimized, or some 
+maximum number of iterations is reached). Here the maximum number of iteration is kept one. This 
+algorithm is guaranteed to converge to a result.The result may be a local optimum (i.e. not necessarily the 
+best possible outcome), meaning that assessing more than one run of the algorithm with randomized starting 
+centroids may give a better outcome.\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=8cm]{k-means diagram.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.1.2}
+\caption{\footnotesize K-Means Clusters}
+\end{center}
+\end{figure}\\
+
+\begin{large}
+\textbf{4.2.2 Linear Regression}
+\end{large}\\
+\tab In order to forecast the crime rate for future years, linear regression technique is 
+being used. This technique consists of a dependent and an independent variable. The linear regression line 
+has an equation of the form y = mX + c, where m is the slope of the line, c is the coefficient of the line, X is the 
+independent variable and y is the dependent variable. Here, the independent variable (X) is Year and the 
+dependent variable (Y) will be the rate of specific crime from the dataset. The core idea is obtaining a line 
+that best fits the data which can be used to predict any new feature value. The best fit line is the one for 
+which total prediction error (all data points) are as small as possible. This best fitting line is called the 
+regression line.
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=8cm]{Linear.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.2.1}
+\caption{\footnotesize  Linear Regression}
+\end{center}
+\end{figure}\\
+
+\begin{large}
+\textbf{4.2.3 Data Visualization}
+\end{large}\\
+\tab Data visualization is essential for representing insights from data in a graphical 
+manner. With the large amount of data in dataset, one of the greatest challenge is to easily communicate the 
+hidden patterns and findings in an easy and understandable manner. To visualise the data, there are many 
+visualisation techniques available. Some of techniques that we are utilizing for the project are line chart, bar 
+chart, correlation matrix, scatterplot.
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=10cm]{data viz.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.3.1}
+\caption{\footnotesize  Data Visualization}
+\end{center}
+\end{figure}\\
+\newpage
+\begin{large}
+\textbf{4.2.4 Arima Model }
+\end{large}\\
+\tab A type of statistical models for analysing and forecasting time series data is the Autoregressive Integrated Moving Average Model. It conforms to conventional data structures and hence provides a simple yet effective way for forecasting, hence by this model we can use analyse the data and predict the area in which this crime may probably occur with the features selected.
+ARIMA is a method for forecasting or predicting future outcomes based on a historical time series. It is based on the statistical concept of serial correlation, where past data points influence future data points.
+The “AR” in ARIMA stands for autoregression, indicating that the model uses the dependent relationship between current data and its past values. In other words, it shows that the data is regressed on its past values.
+The “I” stands for integrated, which means that the data is stationary. Stationary data refers to time-series data that’s been made “stationary” by subtracting the observations from the previous values.
+The “MA” stands for moving average model, indicating that the forecast or outcome of the model depends linearly on the past values. Also, it means that the errors in forecasting are linear functions of past errors. Note that the moving average models are different from statistical moving averages.\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=6cm]{arimaa1 (1).png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.4.1}
+\caption{\footnotesize AutoCorrelation}
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=5cm]{arimaa2 (1).png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.4.2}
+\caption{\footnotesize Partial AutoCorrelation}
+\end{center}
+\end{figure}\\
+\begin{large}
+\textbf{4.3 Results }
+\end{large}\\
+\tab Using k-means clustering total districts are divided into three clusters i.e Red zone, Green zone and blue zone. The red zone indicates maximum crime rate in that particular area, green zone indicates minimum number of crime rates and blue zone indicates average number of crime rates.
+Using ARIMA and  Linear Regression models we predict the crime rates in coming four years.\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=6cm]{Kmeans code (1).png}
+\renewcommand{\thefigure}{4.3.1}
+\caption{\footnotesize Implementation of K-Means Clusters}
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=16cm,height=7.5cm]{Kmeans 2.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.3.2}
+\caption{\footnotesize Implementation of K-Means Algorithm}
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=14cm,height=8cm]{expo2.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.3.3}
+\caption{\footnotesize Data Visualization of Various Crimes}
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=10cm,height=8cm]{expo1.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.3.4}
+\caption{\footnotesize Crime Analysis Using K-Means Algorithm}
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=15cm,height=3cm]{linear1.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.3.5}
+\caption{\footnotesize K-Means Algorithm}
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=15cm]{linear2.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.3.6}
+\caption{\footnotesize Rape Crime Before Prediction}
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=15cm]{linear3.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.3.7}
+\caption{\footnotesize Rape Crime After Prediction}
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=3cm]{arimaa3.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.3.8}
+\caption{\footnotesize Crime Prediction using ARIMA model}
+\end{center}
+\end{figure}
+\\
+
+\clearpage
+\begin{center}
+\section{Conclusion and Future Enchancements}
+\end{center}
+\tab Patterns related to the crimes in specific regions can be identified which can help concerned authorities to 
+take preventive measures. Mapping by area in relation to the type of violence helps to prepare better 
+strategies to prevent specific violence. The trends observed will help in better decision making and reducing 
+the future crime against women. Analysis and prediction of crime by clustering and regression will help to 
+identify the regions where specific crimes are more frequent as well as the crime rate, which in turn can be 
+used by concerned authorities to focus on those areas.\\
+
+\tab The proposed project mainly focuses on emphasizing the crime rates around a particular country (India). So 
+as per the future vision other part of the world can be taken into consideration. Right now it is specifically 
+bound to a single gender (Women). Other genders can be included further. There are certain crimes and 
+cases which are unheard and unregistered around the globe and if they are taken into consideration the 
+accuracy of the crime rates can be improved. Currently the dataset consist of only seven crimes but this can 
+expanded to include many more crimes in the future.\\
+
+\clearpage
+\begin{center}
+\textbf{REFERNCES}
+\end{center}
+[1]  Keerthi.R, Kirthika.B, Pavithra.S , Dr. V.Gowri, "Prediction of Crime Rate Analysis using Machine Learning Approach", IRJET, 2020.\\
+
+[2] Lavanya, D. Akila, " Predicting Crimes against Women's and Criminal Performance in Tamilnadu State", IEEE, 2020 \\
+
+[3] Priyanka Das, Asit Kumar Das, Janmenjoy Nayak, Danilo Pelusi,  "Framework for crime data analysis using relationship among named entities", DBLP, 2020.\\
+
+[4] B.Sivanagaleela, S.Rajesh, "Crime Analysis and Prediction Using Fuzzy C-Means Algorithm",IRJET, 2019.\\
+
+[5] Bhajneet Kaur, Laxmi Ahuja, Vinay Kumar, "Crime Against Women:Analysis and Prediction using Data Mining Techniques", IEEE, 2019.
+
+\end{document}
+
