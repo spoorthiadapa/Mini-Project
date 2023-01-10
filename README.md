@@ -1,8 +1,8 @@
-#Crime Analysis and Prediction against Women
-##Definition
+# Crime Analysis and Prediction against Women
+## Definition
 It is a Machine Learning project to detect crimes occuring in a city and to find number of crimes based on number of crimes that had happened last 14 years using algorithms.
 
-##Working
+## Working
 -step1: Open jupyter notebook
 -step2: Open a new folder
 -step3: Install all the packages and insert dataset of crimes
